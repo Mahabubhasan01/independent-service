@@ -6,7 +6,8 @@ import Navbar from './components/Pages/Navbar/Navbar';
 import CheckOut from './components/Pages/CheckOut/CheckOut';
 import AboutMe from './components/Pages/AboutMe/AboutMe';
 import NoutFound from './components/Pages/NotFound/NoutFound';
-import SignIn from './components/Pages/SignIn/SignIn';
+import SignIn from './components/Pages/SignIn/Register';
+import Login from './components/Pages/Login/Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/checkout' element={<CheckOut></CheckOut>}></Route>
         <Route path='/about' element={<AboutMe></AboutMe>}></Route>
         <Route path='/signin' element={<SignIn/>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
         <Route path='*' element={<NoutFound></NoutFound>}></Route>
       </Routes>
     </div>

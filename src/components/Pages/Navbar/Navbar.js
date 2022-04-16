@@ -40,7 +40,12 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="signin">
-                    Sign In
+                    Register
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="login">
+                    login
                   </Link>
                 </li>
                 <li className="nav-item">
