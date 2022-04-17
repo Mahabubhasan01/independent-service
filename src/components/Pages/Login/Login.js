@@ -46,8 +46,9 @@ const Login = () => {
       }
     
     return (
-        <div className='login-box'>
-            <form onSubmit={handleSubmit}>
+        <div className='login-box' >
+            <div className='custom-login' >
+            <form onSubmit={handleSubmit} >
                 <h3>Login</h3>
                 <div className="form-group">
                     <label>Email</label>
@@ -77,6 +78,7 @@ const Login = () => {
                      className='btn btn-success btn-lg'>Github</button>
                 </div>
                 </form>
+            </div>
                 
             
         </div>

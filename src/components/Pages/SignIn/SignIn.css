@@ -33,7 +33,7 @@
     text-align: left;
   }
   
-  form {
+  .custom-login {
     width: 450px;
     height: 500px;
     margin: auto;

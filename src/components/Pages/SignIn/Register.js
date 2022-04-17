@@ -34,6 +34,7 @@ const Register = () => {
 
     return (
         <div className='login-box'>
+            <div className="custom-login" >
             <form onSubmit={handleSubmit}>
                 <h3>Register</h3>
 
@@ -73,6 +74,7 @@ const Register = () => {
                      className='btn btn-success btn-lg'>Github</button>
                 </div>
                 </form>
+            </div>
             
         </div>
     );

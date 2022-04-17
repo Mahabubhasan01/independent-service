@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className=''>
             
-            <div className='row container mx-auto'>
+            <div className="row container mx-auto ">
             {
             packages.map(p=> <Package
             key={p.id}
