@@ -1,0 +1,44 @@
+[
+    {
+        "name":"alia",
+        "id":1,
+        "price":333,
+        "img":"https://i.ibb.co/RYr3HSW/16alia-ranbir9.jpg",
+        "info":"this is info about my photography package"
+    },
+    {
+        "name":"alia",
+        "id":2,
+        "price":333,
+        "img":"https://i.ibb.co/RYr3HSW/16alia-ranbir9.jpg",
+        "info":"this is info about my photography package"
+    },
+    {
+        "name":"alia",
+        "id":3,
+        "price":333,
+        "img":"https://i.ibb.co/RYr3HSW/16alia-ranbir9.jpg",
+        "info":"this is info about my photography package"
+    },
+    {
+        "name":"alia",
+        "id":4,
+        "price":333,
+        "img":"https://i.ibb.co/RYr3HSW/16alia-ranbir9.jpg",
+        "info":"this is info about my photography package"
+    },
+    {
+        "name":"alia",
+        "id":5,
+        "price":333,
+        "img":"https://i.ibb.co/RYr3HSW/16alia-ranbir9.jpg",
+        "info":"this is info about my photography package"
+    },
+    {
+        "name":"alia",
+        "id":6,
+        "price":333,
+        "img":"https://i.ibb.co/RYr3HSW/16alia-ranbir9.jpg",
+        "info":"this is info about my photography package"
+    }
+]

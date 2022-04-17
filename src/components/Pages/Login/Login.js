@@ -1,6 +1,11 @@
-import React, { useRef, useState } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { 
+    useSignInWithEmailAndPassword,
+     useSignInWithFacebook,
+      useSignInWithGithub,
+       useSignInWithGoogle
+     } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Login = () => {
@@ -26,6 +31,7 @@ const Login = () => {
       const [signInWithGoogle] = useSignInWithGoogle(auth);
       const [signInWithGithub] = useSignInWithGithub(auth);
       const [signInWithFacebook] = useSignInWithFacebook(auth);
+      
       if(user){
         navigate(from,{replace:true})
       }
