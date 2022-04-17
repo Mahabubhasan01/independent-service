@@ -9,16 +9,22 @@ import Login from './components/Pages/Login/Login';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import CustomNavbar from './components/Pages/CustomNavbar/CustomNavbar';
 import NotFound from './components/Pages/NotFound/NotFound';
+import { createContext } from 'react';
+import useCustomHook from './components/Shared/Customhook';
+export const packContext = createContext()
 
 function App() {
+  const [packages,setPackages] = useCustomHook()
   return (
-    <div className="App">
+  <div className="app">
+    
+    <packContext.Provider value={[packages,setPackages]}>
       <CustomNavbar></CustomNavbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
-        <Route path='/checkout' element={
+        <Route path='/checkout/:id' element={
           <ProtectedRoute>
             <CheckOut></CheckOut>
           </ProtectedRoute>
@@ -28,7 +34,8 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
-    </div>
+      </packContext.Provider>
+  </div>
   );
 }
 

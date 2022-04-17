@@ -5,3 +5,40 @@ nav-link{
     text-decoration: none;
     
 }
+h1,h3{
+    color: #fff;
+}
+.top-bar{
+    background-color:rgba(40, 48, 52, 1);
+    margin: 0 15px;
+    
+}
+.top{
+    background-color:rgba(14, 14, 14, 1);
+
+}
+.top-two{
+    display:flex;
+    height: 600px;
+    
+    
+    
+}
+.top-one{
+    width: 70%;
+}
+
+.top-right{
+    width: 100%;
+    display: flex;
+    box-shadow: rgba(126, 126, 145, 0.25) 0px 13px 27px -5px, rgb(132, 161, 175) 0px 8px 16px -8px;
+    height: 400px;
+}
+.btn-top{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border: none;
+    background-color: aquamarine;
+}

@@ -1,12 +1,15 @@
 import React from 'react';
 import useCustomHook from '../../../Shared/Customhook';
+import CheckOut from '../../CheckOut/CheckOut';
+import Footer from '../../Footer/Footer';
 import Package from './Package';
 
 
 const Home = () => {
-    const [packages,setPackages] = useCustomHook()
+    let [packages,setPackages] = useCustomHook()
     return (
-        <div className=''>
+        <div className="top">
+            <div className='top-bar'>
             
             <div className="row container mx-auto ">
             {
@@ -16,6 +19,8 @@ const Home = () => {
             ></Package>)
             }
             </div>
+            <Footer></Footer>
+        </div>
         </div>
     );
 };

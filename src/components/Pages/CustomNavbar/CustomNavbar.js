@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./CustomNavbar.css";
+import img from '../../../alia.jpg'
 
 const CustomNavbar = () => {
   return (
-    <div className="container  bg-success">
-      <nav className="navbar navbar-light bg-light">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+   <div className="top">
+      <div className=" top-bar ">
+      <nav className="navbar navbar-black top-bar mb-4  d-flex justify-content-between">
+        <span><Link className="navbar-brand" to="home">
+              Indigo || PhotoGrapher
+            </Link> </span>
+        <nav className="navbar navbar-expand-lg ">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="home">
-              Navbar
-            </Link>
+            
             <button
               className="navbar-toggler"
               type="button"
@@ -63,7 +66,33 @@ const CustomNavbar = () => {
           </div>
         </nav>
       </nav>
+      <div className="top-two">
+        <div className="container top-one">
+          <div>
+            <h1>“There is one thing  the <br /> photograph  must  contain,<br /> the humanity of the moment.”</h1>
+          </div>
+          <div>
+            <p>This is for simple</p>
+            <button className="btn-top">Check out</button>
+          </div>
+          </div>
+        <div className="top-right">
+          <div>
+          <img className="img-fluid" src={img} alt="" />
+          <h3>Fashion</h3>
+          </div>
+          <div>
+          <img className="img-fluid" src={img} alt="" />
+          <h3>Fashion</h3>
+          </div>
+          <div>
+          <img className="img-fluid" src={img} alt="" />
+          <h3>Fashion</h3>
+          </div>
+        </div>
+      </div>
     </div>
+   </div>
   );
 };
 
