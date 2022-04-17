@@ -6,14 +6,16 @@ import Package from './Package';
 const Home = () => {
     const [packages,setPackages] = useCustomHook()
     return (
-        <div>
-            <h1>hello</h1>
+        <div className=''>
+            
+            <div className='row container mx-auto'>
             {
             packages.map(p=> <Package
             key={p.id}
             p={p}
             ></Package>)
             }
+            </div>
         </div>
     );
 };
