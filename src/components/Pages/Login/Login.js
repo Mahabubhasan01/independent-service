@@ -1,35 +1,78 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Login = () => {
+   /*  const emailRef = useRef('')
+    const passwordRef = useRef('') */
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const location = useLocation()
+    const navigate = useNavigate()
+    let from = location.state?.from?.pathname || "/";
+
+    const handleEmail = e =>{
+        setEmail(e.target.value)
+    }
+    const handlePassword = e =>{
+        setPassword(e.target.value)
+    }
+
+    const [
+        signInWithEmailAndPassword,
+        user
+      ] = useSignInWithEmailAndPassword(auth);
+      const [signInWithGoogle] = useSignInWithGoogle(auth);
+      const [signInWithGithub] = useSignInWithGithub(auth);
+      const [signInWithFacebook] = useSignInWithFacebook(auth);
+      if(user){
+        navigate(from,{replace:true})
+      }
+      const handleSubmit=e=>{
+          e.preventDefault();
+          /* const setemail = email.target.value;
+          const setpassword= password.target.value; */
+          signInWithEmailAndPassword(email,password)
+      }
+      const alterReg =()=>{
+          navigate('/register')
+      }
+    
     return (
         <div className='login-box'>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h3>Login</h3>
-
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input onBlur={handleEmail}
+                     type="email" className="form-control" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group my-4">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input onBlur={handlePassword}  
+                    type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
                 <div>
-                <button type="submit" className="btn btn-dark btn-lg ">Register</button>
+                <button type="submit" className="btn btn-dark btn-lg ">Login</button>
                 </div>
                 <p className="forgot-password text-right">
-                    Already registered <Link className='lnk' to={<Login></Login>}>log in?</Link>
+                    Are you new here <span onClick={alterReg} className='lnk-btn' >Register?</span>
                 </p>
                 <hr />
                 <div>
-                    <button className='btn btn-success btn-lg'>Google</button>
-                    <button className='btn btn-success btn-lg mx-2'>Facebook</button>
-                    <button className='btn btn-success btn-lg'>Github</button>
+                    <button onClick={()=>signInWithGoogle(email,password)}
+                     className='btn btn-success btn-lg'>Google</button>
+                    <button onClick={()=>signInWithFacebook(email,password)}
+                     className='btn btn-success btn-lg mx-2'>Facebook</button>
+                    <button onClick={()=>signInWithGithub(email,password)}
+                     className='btn btn-success btn-lg'>Github</button>
                 </div>
-            </form>
+                </form>
+                
+            
         </div>
     );
 };

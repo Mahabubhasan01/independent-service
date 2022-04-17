@@ -61,7 +61,7 @@
   }
   
   .forgot-password,
-  .forgot-password .lnk {
+  .forgot-password .lnk-btn {
     text-align: right;
     font-size: 13px;
     padding-top: 10px;
@@ -69,10 +69,13 @@
     margin: 0;
   }
   
-  .forgot-password .lnk {
+  .forgot-password .lnk-btn {
     color: #167bff;
   }
   hr{
     height: 5px;
     color: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+  }
+  span{
+    cursor: pointer;
   }

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./CustomNavbar.css";
 
-const Navbar = () => {
+const CustomNavbar = () => {
   return (
     <div className="container  bg-success">
       <nav className="navbar navbar-light bg-light">
@@ -39,13 +39,18 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="signin">
+                  <Link className="nav-link" to="register">
                     Register
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="login">
                     login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="checkout">
+                    Checkout
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -62,4 +67,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default CustomNavbar;
