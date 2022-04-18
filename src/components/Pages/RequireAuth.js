@@ -1,10 +1,10 @@
 import React from 'react';
-import auth from '../firebase.init'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
-import Loading from '../components/Shared/Loading';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
-const ProtectedRoute = ({children}) => {
+const RequireAuth = ({children}) => {
     const [user ,loading] = useAuthState(auth);
     const location = useLocation();
     if(loading){
@@ -16,4 +16,4 @@ const ProtectedRoute = ({children}) => {
     return children;
 };
 
-export default ProtectedRoute;
+export default RequireAuth;

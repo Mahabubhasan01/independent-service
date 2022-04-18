@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './package.css'
 
 const Package = ({p}) => {
@@ -28,7 +28,7 @@ const Package = ({p}) => {
             
             </div>
             <div >
-                <button onClick={()=>navigate(`/checkout${id}`)} className='btn-checkout '> Checkout</button>
+                <Link to='/checkout'><button onClick={()=>navigate(`/checkout${id}`)} className='btn-checkout '> Checkout</button></Link>
             </div>
             
             

@@ -1,12 +1,11 @@
 
 
-const CheckOut = () => {
-    
+import React from 'react';
 
-    
+const CheckOut = () => {
     return (
         <div>
-            <h1>this is checkout</h1>
+            <h1>this is checkout page</h1>
         </div>
     );
 };

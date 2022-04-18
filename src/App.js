@@ -2,16 +2,16 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from '../src/components/Pages/HomePage/Home/Home'
 import Services from './components/Pages/Services/Services';
-import CheckOut from './components/Pages/CheckOut/CheckOut'
 import AboutMe from './components/Pages/AboutMe/AboutMe';
 import SignIn from './components/Pages/SignIn/Register';
 import Login from './components/Pages/Login/Login';
-import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import CustomNavbar from './components/Pages/CustomNavbar/CustomNavbar';
 import NotFound from './components/Pages/NotFound/NotFound';
 import { createContext } from 'react';
 import useCustomHook from './components/Shared/Customhook';
 import Blogs from './components/Pages/Blogs/Blogs';
+import CheckOut from './components/Pages/CheckOut/CheckOut';
+import RequireAuth from './components/Pages/RequireAuth';
 export const packContext = createContext()
 
 function App() {
@@ -25,14 +25,10 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/services' element={
-          <ProtectedRoute>
             <Services></Services>
-          </ProtectedRoute>
         }></Route>
-        <Route path='/checkout/:id' element={
-          <ProtectedRoute>
-            <CheckOut></CheckOut>
-          </ProtectedRoute>
+        <Route path='checkout' element={
+          <RequireAuth><CheckOut></CheckOut></RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/register' element={<SignIn/>}></Route>
