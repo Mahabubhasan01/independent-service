@@ -28,13 +28,14 @@ const Login = () => {
         signInWithEmailAndPassword,
         user
       ] = useSignInWithEmailAndPassword(auth);
+      if(user){
+        navigate(from,{replace:true})
+      }
       const [signInWithGoogle] = useSignInWithGoogle(auth);
       const [signInWithGithub] = useSignInWithGithub(auth);
       const [signInWithFacebook] = useSignInWithFacebook(auth);
       
-      if(user){
-        navigate(from,{replace:true})
-      }
+      
       const handleSubmit=e=>{
           e.preventDefault();
           /* const setemail = email.target.value;

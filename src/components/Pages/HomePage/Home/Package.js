@@ -14,16 +14,16 @@ const Package = ({p}) => {
             <h1>{name}</h1>
             <h4> Prices : ${price}</h4>
             <ul>
-                <li>{list1}</li>
-                <li>{list2}</li>
-                <li>{list3}</li>
-                <li>{list4}</li>
-                <li>{list5}</li>
-                <li>{list6}</li>
-                <li>{list7}</li>
-                <li>{list8}</li>
-                <li>{list9}</li>
-                <li>{list10}</li>
+                <li key={id}>{list1}</li>
+                <li key={id}>{list2}</li>
+                <li key={id}>{list3}</li>
+                <li key={id}>{list4}</li>
+                <li key={id}>{list5}</li>
+                <li key={id}>{list6}</li>
+                <li key={id}>{list7}</li>
+                <li key={id}>{list8}</li>
+                <li key={id}>{list9}</li>
+                <li key={id}>{list10}</li>
             </ul>
             
             </div>

@@ -1,83 +1,138 @@
-import React, { useRef } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
-import auth from '../../../firebase.init';
-import './SignIn.css'
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithFacebook,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { useUpdateProfile } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import Loading from "../../Shared/Loading";
+
+import { useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
+import "./Register.css";
 
 const Register = () => {
-    const emailRef = useRef('')
-    const passwordRef = useRef('')
-    const navigate = useNavigate()
-    
+    const [name,setName] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    const [
-        createUserWithEmailAndPassword,
-        user
-      ] = useCreateUserWithEmailAndPassword(auth);
-      const [signInWithGoogle,user1] = useSignInWithGoogle(auth);
-      const [signInWithGithub,user2] = useSignInWithGithub(auth);
-      const [signInWithFacebook,user3] = useSignInWithFacebook(auth);
-        const email = emailRef.current.value;
-        const password= passwordRef.current.value;
-      const handleSubmit=e=>{
-          e.preventDefault();
-          
-          createUserWithEmailAndPassword(email,password)
-      }
-      console.log(handleSubmit)
-      const alterLog=()=>{
-          navigate('/login')
-      }
-      if(user ||user1 || user2 || user3 ){
-          navigate('/home')
-      }
+  const [createUserWithEmailAndPassword, user,loading] =
+    useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    return (
-        <div className='login-box'>
-            <div className="custom-login" >
-            <form onSubmit={handleSubmit}>
-                <h3>Register</h3>
+  const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
+  const [signInWithGithub, user2] = useSignInWithGithub(auth);
+  const [signInWithFacebook, user3] = useSignInWithFacebook(auth);
 
-                <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
-                <div className="form-group my-4">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
-                </div>
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-                <div className="form-group">
-                    <label>Email</label>
-                    <input ref={emailRef} type="email" className="form-control" placeholder="Enter email" />
-                </div>
+    createUserWithEmailAndPassword(email, password);
+    updateProfile({ displayName: name });
+    navigate("/home");
+  };
 
-                <div className="form-group my-4">
-                    <label>Password</label>
-                    <input ref={passwordRef}  type="password" className="form-control" placeholder="Enter password" />
-                </div>
+  const alterLog = () => {
+    navigate("/login");
+  };
+  if(updating || loading){
+      return <Loading></Loading>
+  }
+  if (user || user1 || user2 || user3) {
+    navigate("/home");
+  }
 
-                <div>
-                <button type="submit" className="btn btn-dark btn-lg ">Register</button>
-                </div>
-                <p className="forgot-password text-right">
-                    Already registered <span onClick={alterLog} className='lnk-btn' >log in?</span>
-                </p>
-                <hr />
-                <div>
-                <button onClick={()=>signInWithGoogle(email,password)}
-                     className='btn btn-success btn-lg'>Google</button>
-                    <button onClick={()=>signInWithFacebook(email,password)}
-                     className='btn btn-success btn-lg mx-2'>Facebook</button>
-                    <button onClick={()=>signInWithGithub(email,password)}
-                     className='btn btn-success btn-lg'>Github</button>
-                </div>
-                </form>
-            </div>
-            
-        </div>
-    );
+  return (
+    <div className="login-box">
+      <div className="custom-login">
+        <form onSubmit={handleSubmit}>
+          <h3>Register</h3>
+          <div className="form-group">
+            <label>First name</label>
+            <input onBlur={handleName}
+              type="text"
+              className="form-control"
+              placeholder="First name"
+            />
+          </div>
+
+          <div className="form-group my-4">
+            <label>Last name</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Last name"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              onBlur={handleEmail}
+              type="email"
+              className="form-control"
+              placeholder="Enter email"
+            />
+          </div>
+
+          <div className="form-group my-4">
+            <label>Password</label>
+            <input
+              onBlur={handlePassword}
+              type="password"
+              className="form-control"
+              placeholder="Enter password"
+            />
+          </div>
+
+          <div>
+            <button type="submit" className="btn btn-dark btn-lg ">
+              Register
+            </button>
+          </div>
+          <p className="forgot-password text-right">
+            Already registered{" "}
+            <span onClick={alterLog} className="lnk-btn">
+              log in?
+            </span>
+          </p>
+          <hr />
+          <div>
+            <button
+              onClick={() => signInWithGoogle(email, password)}
+              className="btn btn-dark btn-lg"
+            >
+              Google
+            </button>
+            <button
+              onClick={() => signInWithFacebook(email, password)}
+              className="btn btn-dark btn-lg mx-2"
+            >
+              Facebook
+            </button>
+            <button
+              onClick={() => signInWithGithub(email, password)}
+              className="btn btn-dark btn-lg"
+            >
+              Github
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Register;

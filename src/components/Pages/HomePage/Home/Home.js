@@ -27,7 +27,7 @@ const Home = () => {
         <div className="top-right">
           <div>
             <img className="img-fluid" src="https://i.ibb.co/PmT3cRd/Family-Day-1-300x300.jpg" alt="" />
-            <h3>Family</h3>
+            <h3> Family</h3>
           </div>
           <div>
             <img className="img-fluid" src="https://i.ibb.co/PYLbrk3/5a6721e5d049aad4e9356387b69fbdc6.jpg" alt="" />

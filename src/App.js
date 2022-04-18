@@ -30,7 +30,7 @@ function App() {
             <CheckOut></CheckOut>
           </ProtectedRoute>
         }></Route>
-        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        {/* <Route path='/blogs' element={<Blogs></Blogs>}></Route> */}
         <Route path='/register' element={<SignIn/>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/about' element={<AboutMe></AboutMe>}></Route>
