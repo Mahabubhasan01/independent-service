@@ -15,7 +15,7 @@ const CustomNavbar = () => {
           <div className="container-fluid">
             
             <button
-              className="navbar-toggler"
+              className="navbar-toggler "
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -23,7 +23,7 @@ const CustomNavbar = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon bg-primary"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ">
@@ -41,11 +41,11 @@ const CustomNavbar = () => {
                     Services
                   </Link>
                 </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <Link className="nav-link" to="blogs">
                     Blogs
                   </Link>
-                </li> */}
+                </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="register">
                     Register

@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from '../src/components/Pages/HomePage/Home/Home'
 import Services from './components/Pages/Services/Services';
-import CheckOut from './components/Pages/CheckOut/CheckOut';
+import CheckOut from './components/Pages/CheckOut/CheckOut'
 import AboutMe from './components/Pages/AboutMe/AboutMe';
 import SignIn from './components/Pages/SignIn/Register';
 import Login from './components/Pages/Login/Login';
@@ -30,7 +30,7 @@ function App() {
             <CheckOut></CheckOut>
           </ProtectedRoute>
         }></Route>
-        {/* <Route path='/blogs' element={<Blogs></Blogs>}></Route> */}
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/register' element={<SignIn/>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/about' element={<AboutMe></AboutMe>}></Route>
