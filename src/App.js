@@ -11,6 +11,7 @@ import CustomNavbar from './components/Pages/CustomNavbar/CustomNavbar';
 import NotFound from './components/Pages/NotFound/NotFound';
 import { createContext } from 'react';
 import useCustomHook from './components/Shared/Customhook';
+import Blogs from './components/Pages/Blogs/Blogs';
 export const packContext = createContext()
 
 function App() {
@@ -29,9 +30,10 @@ function App() {
             <CheckOut></CheckOut>
           </ProtectedRoute>
         }></Route>
-        <Route path='/about' element={<AboutMe></AboutMe>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/register' element={<SignIn/>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/about' element={<AboutMe></AboutMe>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       </packContext.Provider>
