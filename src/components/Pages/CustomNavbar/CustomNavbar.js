@@ -27,9 +27,9 @@ const CustomNavbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ">
-                <li className="nav-item">
+                <li className="nav-item text-black">
                   <Link
-                    className="nav-link active"
+                    className="nav-link active "
                     aria-current="page"
                     to="home"
                   >

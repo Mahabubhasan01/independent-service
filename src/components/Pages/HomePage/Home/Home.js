@@ -19,7 +19,7 @@ const Home = () => {
             </h1>
           </div>
           <div>
-            <p>This is for simple</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellendus cupiditate ex omnis aut deleniti tempora minima quas hic odit.</p>
             <button className="btn-top">Check out</button>
           </div>
         </div>
