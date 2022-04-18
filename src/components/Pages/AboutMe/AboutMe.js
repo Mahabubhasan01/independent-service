@@ -11,7 +11,8 @@ const AboutMe = () => {
               <h5 >Mahabub Hasan</h5>
               <p >
                Hey I am Mahabub . I am student and live in south state of district Noakhali. I like to play with program of codding like any language.
-               I am so curious need to know new thing in the world.coz You can anything not everything.
+               I am so curious need to know new thing in the world.
+               Stay foolish stay hungry called steb Jobs
               </p>
             </div>
           </div>

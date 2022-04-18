@@ -39,6 +39,9 @@ const Register = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
+  if (user || user1 || user2 || user3) {
+    navigate("/home");
+  } 
   let errorMsg;
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,19 +50,18 @@ const Register = () => {
     }
     createUserWithEmailAndPassword(email, password);
     updateProfile({ displayName: name });
-    /* if (user || user1 || user2 || user3) {
-      
-    } */
-    navigate("/home");
+    
+    
   };
 
   const alterLog = () => {
     navigate("/login");
   };
+   
   if (updating || loading) {
     return <Loading></Loading>;
   }
-  /*  */
+  
 
   return (
     <div className="login-box">
@@ -113,7 +115,7 @@ const Register = () => {
             
           </div>
           <p className="forgot-password text-right">
-            Already registered{" "}
+            Already registered
             <span onClick={alterLog} className="lnk-btn">
               log in?
             </span>
