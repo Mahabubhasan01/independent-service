@@ -9,7 +9,6 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
 
@@ -45,7 +44,11 @@ const Login = () => {
   if (loading || sending) {
     return <Loading></Loading>;
   }
-
+  let errormsg;
+if(error1){
+    errormsg= <p>{error1?.message}</p>
+    return errormsg
+}
   const handleSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
@@ -53,9 +56,9 @@ const Login = () => {
   const resetPassword = async () => {
     if (email) {
       await sendPasswordResetEmail(email);
-      toast("Sent Email");
+      alert("Sent Email");
     } else {
-      toast("Please your right email address");
+      alert("Please your right email address");
     }
   };
   const alterReg = () => {
@@ -86,7 +89,6 @@ const Login = () => {
               placeholder="Enter password"
             />
           </div>
-
           <div>
             <button type="submit" className="btn btn-dark btn-lg ">
               Login
@@ -96,7 +98,7 @@ const Login = () => {
             className="mt-3 text-primary"
             onClick={async () => {
               await sendPasswordResetEmail(email);
-              toast("Sent email");
+              alert("Sent email");
             }}
           >
             {" "}

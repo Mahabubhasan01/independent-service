@@ -1,7 +1,5 @@
 import {
-  useCreateUserWithEmailAndPassword,
-  useSendPasswordResetEmail,
-  useSignInWithFacebook,
+  useCreateUserWithEmailAndPassword,  useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -12,8 +10,7 @@ import Loading from "../../Shared/Loading";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import "./Register.css";
-import { toast } from "react-toastify";
-import { Toast } from "react-toastify/dist/components";
+
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -49,7 +46,7 @@ const Register = () => {
     event.preventDefault();
     if(error){
       
-      errorMsg= Toast(<p>Your email and password do not match</p>)
+      errorMsg= (<p>Your email and password do not match</p>)
     }
     createUserWithEmailAndPassword(email, password);
     updateProfile({ displayName: name });
