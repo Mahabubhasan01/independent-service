@@ -1,3 +1,4 @@
+import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
 import { 
     useSignInWithEmailAndPassword,
@@ -6,6 +7,7 @@ import {
        useSignInWithGoogle
      } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const Login = () => {
@@ -31,16 +33,17 @@ const Login = () => {
       if(user){
         navigate(from,{replace:true})
       }
-      const [signInWithGoogle] = useSignInWithGoogle(auth);
-      const [signInWithGithub] = useSignInWithGithub(auth);
-      const [signInWithFacebook] = useSignInWithFacebook(auth);
+      const [signInWithGoogle,user1] = useSignInWithGoogle(auth);
+      const [signInWithGithub,user2] = useSignInWithGithub(auth);
+      const [signInWithFacebook,user3] = useSignInWithFacebook(auth);
       
       
       const handleSubmit=e=>{
           e.preventDefault();
-          /* const setemail = email.target.value;
-          const setpassword= password.target.value; */
           signInWithEmailAndPassword(email,password)
+          if (user || user1 || user2 || user3) {
+            navigate("/home");
+          }
       }
       const alterReg =()=>{
           navigate('/register')
@@ -50,7 +53,7 @@ const Login = () => {
         <div className='login-box' >
             <div className='custom-login' >
             <form onSubmit={handleSubmit} >
-                <h3>Login</h3>
+                <h3 className='text-center'>Login</h3>
                 <div className="form-group">
                     <label>Email</label>
                     <input onBlur={handleEmail}
@@ -66,17 +69,27 @@ const Login = () => {
                 <div>
                 <button type="submit" className="btn btn-dark btn-lg ">Login</button>
                 </div>
+                <span
+              className="mt-3 text-primary"
+              onClick={async () => {
+                await sendPasswordResetEmail(email);
+                toast("Sent email");
+              }}
+            >
+              {" "}
+              <p>Forget Password</p>
+            </span>
                 <p className="forgot-password text-right">
                     Are you new here <span onClick={alterReg} className='lnk-btn' >Register?</span>
                 </p>
                 <hr />
                 <div>
                     <button onClick={()=>signInWithGoogle(email,password)}
-                     className='btn btn-success btn-lg'>Google</button>
+                     className='btn btn-success btn-dark'>Google</button>
                     <button onClick={()=>signInWithFacebook(email,password)}
-                     className='btn btn-success btn-lg mx-2'>Facebook</button>
+                     className='btn btn-success btn-dark mx-2'>Facebook</button>
                     <button onClick={()=>signInWithGithub(email,password)}
-                     className='btn btn-success btn-lg'>Github</button>
+                     className='btn btn-success btn-dark'>Github</button>
                 </div>
                 </form>
             </div>

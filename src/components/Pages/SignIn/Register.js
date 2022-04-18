@@ -1,5 +1,6 @@
 import {
   useCreateUserWithEmailAndPassword,
+  useSendPasswordResetEmail,
   useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
@@ -11,16 +12,19 @@ import Loading from "../../Shared/Loading";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import "./Register.css";
+import { toast } from "react-toastify";
 
 const Register = () => {
-    const [name,setName] = useState('')
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const [createUserWithEmailAndPassword, user,loading] =
-    useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [createUserWithEmailAndPassword, user, loading,error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [sendPasswordResetEmail, sending, error1] =
+    useSendPasswordResetEmail(auth);
 
   const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
   const [signInWithGithub, user2] = useSignInWithGithub(auth);
@@ -35,33 +39,38 @@ const Register = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
+  let errorMsg;
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    if(error){
+      errorMsg= <p>Your email and password do not match</p>
+    }
     createUserWithEmailAndPassword(email, password);
     updateProfile({ displayName: name });
+    /* if (user || user1 || user2 || user3) {
+      
+    } */
     navigate("/home");
   };
 
   const alterLog = () => {
     navigate("/login");
   };
-  if(updating || loading){
-      return <Loading></Loading>
+  if (updating || loading) {
+    return <Loading></Loading>;
   }
-  if (user || user1 || user2 || user3) {
-    navigate("/home");
-  }
+  /*  */
 
   return (
     <div className="login-box">
       <div className="custom-login">
         <form onSubmit={handleSubmit}>
-          <h3>Register</h3>
+          {errorMsg}
+          <h3 className="text-dark text-center"> Please Register Here</h3>
           <div className="form-group">
             <label>First name</label>
-            <input onBlur={handleName}
+            <input
+              onBlur={handleName}
               type="text"
               className="form-control"
               placeholder="First name"
@@ -101,6 +110,7 @@ const Register = () => {
             <button type="submit" className="btn btn-dark btn-lg ">
               Register
             </button>
+            
           </div>
           <p className="forgot-password text-right">
             Already registered{" "}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './package.css'
 
 const Package = ({p}) => {
-    const {name,id,price,img,info,list1,list2,list3,
+    const {name,id,price,img,list1,list2,list3,
         list4,list5,list6,list7,list8,list9,list10} = p;
     const navigate = useNavigate()
     console.log(p)
@@ -13,17 +13,17 @@ const Package = ({p}) => {
             <img className='img-fluid package-img' src={img} alt="" />
             <h1>{name}</h1>
             <h4> Prices : ${price}</h4>
-            <ul>
-                <li key={id}>{list1}</li>
-                <li key={id}>{list2}</li>
-                <li key={id}>{list3}</li>
-                <li key={id}>{list4}</li>
-                <li key={id}>{list5}</li>
-                <li key={id}>{list6}</li>
-                <li key={id}>{list7}</li>
-                <li key={id}>{list8}</li>
-                <li key={id}>{list9}</li>
-                <li key={id}>{list10}</li>
+            <ul style={{fontSize:'500'}}>
+                <li >{list1}</li>
+                <li>{list2}</li>
+                <li>{list3}</li>
+                <li>{list4}</li>
+                <li >{list5}</li>
+                <li >{list6}</li>
+                <li >{list7}</li>
+                <li >{list8}</li>
+                <li >{list9}</li>
+                <li >{list10}</li>
             </ul>
             
             </div>

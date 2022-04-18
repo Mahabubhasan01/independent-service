@@ -5,7 +5,7 @@ nav-link{
     text-decoration: none;
     
 }
-h1,h3{
+h1,h3,h5{
     color: #fff;
 }
 .logo{
@@ -25,7 +25,7 @@ h1,h3{
 }
 .top-two{
     display:flex;
-    height: 600px;
+    height: 500px;
     
     
     
@@ -38,7 +38,8 @@ h1,h3{
     width: 100%;
     display: flex;
     box-shadow: rgba(126, 126, 145, 0.25) 0px 13px 27px -5px, rgb(132, 161, 175) 0px 8px 16px -8px;
-    height: 400px;
+    height: 350px;
+    padding: 50px;
 }
 .btn-top{
     width: 200px;
