@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import "./Register.css";
 import { toast } from "react-toastify";
+import { Toast } from "react-toastify/dist/components";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -20,15 +21,15 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const [createUserWithEmailAndPassword, user, loading,error] =
-    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [createUserWithEmailAndPassword, user, loading,error] =useCreateUserWithEmailAndPassword(auth, 
+    { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-  const [sendPasswordResetEmail, sending, error1] =
-    useSendPasswordResetEmail(auth);
 
-  const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
-  const [signInWithGithub, user2] = useSignInWithGithub(auth);
-  const [signInWithFacebook, user3] = useSignInWithFacebook(auth);
+  
+
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
+  const [signInWithFacebook] = useSignInWithFacebook(auth);
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -39,19 +40,20 @@ const Register = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-  if (user || user1 || user2 || user3) {
-    navigate("/home");
+  if (user ) {
+    
   } 
+
   let errorMsg;
   const handleSubmit = (event) => {
     event.preventDefault();
     if(error){
-      errorMsg= <p>Your email and password do not match</p>
+      
+      errorMsg= Toast(<p>Your email and password do not match</p>)
     }
     createUserWithEmailAndPassword(email, password);
     updateProfile({ displayName: name });
-    
-    
+    navigate("/home");
   };
 
   const alterLog = () => {
@@ -115,8 +117,8 @@ const Register = () => {
             
           </div>
           <p className="forgot-password text-right">
-            Already registered
-            <span onClick={alterLog} className="lnk-btn">
+            Already registered 
+            <span onClick={alterLog} className="lnk-btn ms-2">
               log in?
             </span>
           </p>
