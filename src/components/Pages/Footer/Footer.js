@@ -4,8 +4,8 @@ import "./Footer.css";
 
 const Footer = () => {
   const description =
-    "According to wikipedia, the cat (Felis catus) is a domestic species of small carnivorous mammal. It is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family. A cat can either be a house cat, a farm cat or a feral cat; the latter ranges freely and avoids human contact.";
-  const title = "Indigo";
+    "“Photography takes an instant out of time, altering life by holding it still.” “There are always two people in every picture: the photographer and the viewer.” “Photography helps people to see.” “What I like about photographs is that they capture a moment that's gone forever, impossible to reproduce.”";
+  const title = "Indigo || Photographer";
   const columns = [
     {
       title: "Resources",
@@ -67,7 +67,7 @@ const Footer = () => {
         instagram="fluffy_cat_live"
         youtube="UCFt6TSF464J8K82xeA?"
         pinterest="fluffy_cats_collections"
-        copyright="Indigo"
+        copyright="Indigo || Photographer"
         iconColor="black"
         backgroundColor="bisque"
         fontColor="black"
